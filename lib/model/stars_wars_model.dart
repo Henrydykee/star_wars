@@ -1,64 +1,53 @@
 
-class StarWarsList {
-  List<StarWars> starWars;
-  StarWarsList({this.starWars});
-  factory StarWarsList.fromJson(List json) {
-    List<StarWars> newList = json.map((i) => StarWars.fromJson(i)).toList();
-    return StarWarsList(starWars: newList);
-  }
-}
+// class StarWarsList {
+//   List<StarWars> starWars;
+//   StarWarsList({this.starWars});
+//   factory StarWarsList.fromJson(List json) {
+//     List<StarWars> newList = json.map((i) => StarWars.fromJson(i)).toList();
+//     return StarWarsList(starWars: newList);
+//   }
+// }
+
+// class StarWars {
+//   // int count;
+//   // String next;
+//   // String previous;
+//   List<dynamic> results;
+//
+//   StarWars({this.results});
+//
+//   StarWars.fromJson(Map<String, dynamic> json) {
+//     // count = json['count'];
+//     // next = json['next'];
+//     // previous = json['previous'];
+//     if (json['results'] != null) {
+//       results = new List<Results>();
+//       json['results'].forEach((v) {
+//         results.add(new Results.fromJson(v));
+//       });
+//     }
+//   }
+// }
 
 class StarWars {
-  int count;
-  String next;
-  String previous;
-  List<Results> results;
+ final String name;
+ final String height;
+ final String mass;
+ final String hairColor;
+ final String skinColor;
+ final String eyeColor;
+ final String birthYear;
+ final String gender;
+final  String homeworld;
+ final List<String> films;
+ final List<String> species;
+ final List<String> vehicles;
+ final List<String> starships;
+final  String created;
+final  String edited;
+ final String url;
 
-  StarWars({this.count, this.next, this.previous, this.results});
-
-  StarWars.fromJson(Map<String, dynamic> json) {
-    count = json['count'];
-    next = json['next'];
-    previous = json['previous'];
-    if (json['results'] != null) {
-      results = new List<Results>();
-      json['results'].forEach((v) {
-        results.add(new Results.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['count'] = this.count;
-    data['next'] = this.next;
-    data['previous'] = this.previous;
-    if (this.results != null) {
-      data['results'] = this.results.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Results {
-  String name;
-  String height;
-  String mass;
-  String hairColor;
-  String skinColor;
-  String eyeColor;
-  String birthYear;
-  String gender;
-  String homeworld;
-  List<String> films;
-  List<String> species;
-  List<String> vehicles;
-  List<String> starships;
-  String created;
-  String edited;
-  String url;
-
-  Results(
+  StarWars(
       {this.name,
         this.height,
         this.mass,
@@ -76,43 +65,22 @@ class Results {
         this.edited,
         this.url});
 
-  Results.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    height = json['height'];
-    mass = json['mass'];
-    hairColor = json['hair_color'];
-    skinColor = json['skin_color'];
-    eyeColor = json['eye_color'];
-    birthYear = json['birth_year'];
-    gender = json['gender'];
-    homeworld = json['homeworld'];
-    films = json['films'].cast<String>();
-    species = json['species'].cast<String>();
-    vehicles = json['vehicles'].cast<String>();
-    starships = json['starships'].cast<String>();
-    created = json['created'];
-    edited = json['edited'];
+  StarWars.fromJson(Map<String, dynamic> json) :
+    name = json['name'],
+    height = json['height'],
+    mass = json['mass'],
+    hairColor = json['hair_color'],
+    skinColor = json['skin_color'],
+    eyeColor = json['eye_color'],
+    birthYear = json['birth_year'],
+    gender = json['gender'],
+    homeworld = json['homeworld'],
+    films = json['films'].cast<String>(),
+    species = json['species'].cast<String>(),
+    vehicles = json['vehicles'].cast<String>(),
+    starships = json['starships'].cast<String>(),
+    created = json['created'],
+    edited = json['edited'],
     url = json['url'];
-  }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['height'] = this.height;
-    data['mass'] = this.mass;
-    data['hair_color'] = this.hairColor;
-    data['skin_color'] = this.skinColor;
-    data['eye_color'] = this.eyeColor;
-    data['birth_year'] = this.birthYear;
-    data['gender'] = this.gender;
-    data['homeworld'] = this.homeworld;
-    data['films'] = this.films;
-    data['species'] = this.species;
-    data['vehicles'] = this.vehicles;
-    data['starships'] = this.starships;
-    data['created'] = this.created;
-    data['edited'] = this.edited;
-    data['url'] = this.url;
-    return data;
-  }
 }
